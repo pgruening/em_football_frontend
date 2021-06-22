@@ -3,7 +3,7 @@ import time
 from os.path import join
 
 import pandas as pd
-from DLBio.helpers import MyDataFrame
+from helpers import MyDataFrame
 from mdutils.mdutils import MdUtils
 from read_em_results import create_match_table
 
