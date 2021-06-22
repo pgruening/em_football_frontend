@@ -1,0 +1,25 @@
+If you want to run opencv on heroku:
+
+link:
+https://stackoverflow.com/questions/46596267/cant-make-opencv-work-on-heroku
+
+You have to install some dependencies, as Heroku will not automatically do it for you.
+
+Add an Aptfile in your project directory and add the below file
+libsm6
+
+libxrender1
+
+libfontconfig1
+
+libice6
+
+NOTE: Aptfile should not have any .txt or any other extension. Just like the Procfile
+
+Push the edited code to Github
+
+In heroku dashboard,
+goto your-app --> settings --> buildpacks --> add buildpacks --> https://github.com/heroku/heroku-buildpack-apt.git
+copy and paste this link --> add buildpack
+
+Deploy your app
