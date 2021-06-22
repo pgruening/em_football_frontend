@@ -28,8 +28,7 @@ def run(write_file=True, read_from_file=True):
             'points': val['points'].sum(),
         })
 
-    df = df.get_df().sort_values('points', ascending=False)
-    print(df)
+    df = df.get_df().sort_values('points', ascending=False, ignore_index=True)
 
     if write_file:
         path = 'README.md'
