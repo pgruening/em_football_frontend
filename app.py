@@ -23,3 +23,5 @@ app.layout = html.Div(children=[
 
 if __name__ == '__main__':
     app.run_server(debug=False)
+    # needed for gunicorn
+    server = app.server
