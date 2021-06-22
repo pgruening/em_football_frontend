@@ -5,7 +5,7 @@ import dash_html_components as html
 
 from exe_evaluation import run
 
-run(write_file=False, read_from_file=False)
+run(write_file=False)
 
 out = ''
 with open('tmp.md', 'r') as file:

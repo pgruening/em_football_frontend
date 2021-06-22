@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from DLBio.helpers import MyDataFrame
+from helpers import MyDataFrame
 import pandas as pd
 import re
 import requests

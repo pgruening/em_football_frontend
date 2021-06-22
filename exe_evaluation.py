@@ -11,13 +11,16 @@ PATH = 'em_results.csv'
 PLAYER_RESULTS = 'player_results'
 
 
-def run(write_file=True, read_from_file=True):
+def run(write_file=True):
+    # update match from internet
+    create_match_table()
+
     players = {
-        'Manja': evaluate('manja.md', read_from_file),
-        'Philipp (Bot)': evaluate('philipp.md', read_from_file),
-        'Felix': evaluate('felix.md', read_from_file),
-        'Hans-Peter (Bot)': evaluate('hans_peter.md', read_from_file),
-        'Laura': evaluate('laura.md', read_from_file),
+        'Manja': evaluate('manja.md'),
+        'Philipp (Bot)': evaluate('philipp.md'),
+        'Felix': evaluate('felix.md'),
+        'Hans-Peter (Bot)': evaluate('hans_peter.md'),
+        'Laura': evaluate('laura.md'),
     }
 
     df = MyDataFrame()
@@ -52,12 +55,8 @@ def run(write_file=True, read_from_file=True):
     md_file.create_md_file()
 
 
-def evaluate(path, read_from_file):
-    if read_from_file:
-        gt = pd.read_csv(PATH)
-    else:
-        # crawl data from the net
-        gt = create_match_table()
+def evaluate(path):
+    gt = pd.read_csv(PATH)
 
     gt['ts'] = [to_time(row) for _, row in gt.iterrows()]
     gt = gt.sort_values('ts', ascending=True)
