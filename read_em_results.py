@@ -1,8 +1,12 @@
-from bs4 import BeautifulSoup
-from helpers import MyDataFrame
-import pandas as pd
 import re
+from os.path import isfile
+
+import pandas as pd
 import requests
+from bs4 import BeautifulSoup
+from requests.exceptions import Timeout
+
+from helpers import MyDataFrame
 
 URL = 'https://www.fussball-wm.pro/em-2021/tabellen-ergebnisse/'
 
@@ -16,7 +20,14 @@ HEADERS = {
 
 
 def create_match_table():
-    req = requests.get(URL, HEADERS)
+    try:
+        req = requests.get(URL, HEADERS, timeout=(10, 10))
+    except Timeout:
+        if isfile('em_results.csv'):
+            return
+        else:
+            req = requests.get(URL, HEADERS, timeout=(30, 30))
+
     soup = BeautifulSoup(req.content, 'html.parser')
     tables_ = soup.findAll('table')
 
