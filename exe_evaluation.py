@@ -44,7 +44,7 @@ def run(write_file=True):
 
     md_file.new_header(level=2, title='Rules')
     md_file.new_paragraph(
-        "Predicting the right result: 3 Points. Predicting the right winner or draw: 1 Point. Accuracy: number of correct winner/draw predictions divided by total number of games."
+        "Predicting the right result: 3 Points. Predicting the right winner or draw: 2 Point. Accuracy: number of correct winner/draw predictions divided by total number of games."
     )
 
     md_file.new_header(level=1, title="Each player's prediction:")
@@ -79,12 +79,12 @@ def evaluate(path):
             points = 3
         elif (g1 > g2) and (y['g1'] > y['g2']):
             # right class
-            points = 1
+            points = 2
         elif (g2 > g1) and (y['g2'] > y['g1']):
             # right class
-            points = 1
+            points = 2
         elif (g2 == g1) and (y['g2'] == y['g1']):
-            points = 1
+            points = 2
         else:
             points = 0
 
